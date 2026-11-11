@@ -21,14 +21,14 @@
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preload" href="fonts/archivo-subset.woff2?v=2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/pretendard-subset.woff2?v=2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/archivo-subset.woff2?v=4" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/pretendard-subset.woff2?v=4" as="font" type="font/woff2" crossorigin>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Gyu Lap","alternateName":"규랩","url":"https://gyulap.com/","email":"contact@gyulap.com"}
 </script>
 <style>
-@font-face { font-family: "Archivo"; src: url("fonts/archivo-subset.woff2?v=2") format("woff2"); font-weight: 400 800; font-stretch: 62% 125%; font-display: swap; }
-@font-face { font-family: "GL Text"; src: url("fonts/pretendard-subset.woff2?v=2") format("woff2"); font-weight: 400 700; font-display: swap; }
+@font-face { font-family: "Archivo"; src: url("fonts/archivo-subset.woff2?v=4") format("woff2"); font-weight: 400 800; font-stretch: 62% 125%; font-display: swap; }
+@font-face { font-family: "GL Text"; src: url("fonts/pretendard-subset.woff2?v=4") format("woff2"); font-weight: 400 700; font-display: swap; }
 
 :root {
   --bg: #0E0D0C; --ink: #F2F0EB; --sub: #A9A69F; --line: #2A2826; --accent: #FF6B2C;
@@ -62,23 +62,23 @@ main:focus { outline: none; }
 .site-nav a { display: flex; align-items: center; min-height: 44px; padding: 0 14px; }
 
 /* hero */
-.hero { display: grid; gap: 40px; padding-block: 72px 96px; }
+.hero { --h1: clamp(44px, 15.5vw, 198px); display: grid; gap: 40px; padding-block: 72px 96px; }
 .kicker { display: flex; flex-wrap: wrap; gap: 2px 14px; font-size: 15px; }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 505px; column-gap: 48px; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr); }
 .hero h1 {
-  grid-column: 1 / -1; grid-row: 1; align-self: end; align-self: last baseline;
+  grid-column: 1; grid-row: 1; align-self: end; align-self: last baseline;
   font-family: var(--display); font-stretch: 125%; font-weight: 700;
-  font-size: clamp(44px, 15.5vw, 198px); line-height: 0.86; letter-spacing: -0.045em;
+  font-size: var(--h1); line-height: 0.86; letter-spacing: -0.045em;
 }
 .hero h1 .line { display: block; }
 .hero h1 .dot { color: var(--accent); }
-.intro { grid-column: 2; grid-row: 1; align-self: end; align-self: last baseline; display: grid; gap: 10px; }
+/* the intro sits right after "lap." (1.86em wide) with a 0.36em gap, on the headline's last baseline */
+.intro { grid-column: 1; grid-row: 1; justify-self: start; margin-left: calc(var(--h1) * 2.22); align-self: end; align-self: last baseline; display: grid; gap: 10px; }
 .intro .ko { font-size: 19px; text-wrap: pretty; }
 .intro .en { font-size: 15px; text-wrap: pretty; }
-/* side by side only while the intro (4 lines) is shorter than one headline line */
+/* side by side only while the intro (3 lines) is shorter than one headline line */
 @media (max-width: 1040px) {
-  .hero-grid { grid-template-columns: minmax(0, 1fr); }
-  .intro { grid-column: 1; grid-row: 2; max-width: 505px; margin-top: 28px; }
+  .intro { grid-row: 2; margin-left: 0; max-width: 505px; margin-top: 28px; }
 }
 
 /* rows */
@@ -89,7 +89,8 @@ main:focus { outline: none; }
 @media (max-width: 900px) { .row .wrap { grid-template-columns: minmax(0, 1fr); } }
 
 .statement { max-width: 20em; font-size: clamp(24px, 2.9vw, 36px); line-height: 1.4; font-weight: 500; letter-spacing: -0.02em; text-wrap: balance; }
-.work .en { max-width: 36em; margin-top: 16px; font-size: 16px; text-wrap: pretty; }
+.work .ko { max-width: 34em; margin-top: 20px; font-size: 19px; text-wrap: pretty; }
+.work .en { max-width: 36em; margin-top: 10px; font-size: 16px; text-wrap: pretty; }
 .work .meta { display: flex; flex-wrap: wrap; gap: 2px 14px; margin-top: 32px; font-size: 15px; }
 
 .about .ko { max-width: 34em; font-size: 19px; text-wrap: pretty; }
@@ -160,8 +161,9 @@ main:focus { outline: none; }
       <h2 id="work-h" lang="en">Work</h2>
       <div class="body">
         <h3 class="statement">한 손으로 조작하는 다크 판타지 모바일 액션 로그라이트를 개발하고 있습니다.</h3>
-        <p class="en sub" lang="en">We’re developing a dark fantasy action roguelite for mobile, designed for <span class="nowrap">one-handed play.</span></p>
-        <p class="meta">개발 중 · 출시 예정 플랫폼: iOS, Android <span class="sub" lang="en">In development · Planned platforms: iOS, Android</span></p>
+        <p class="ko">이동과 회피만 직접 조작하고 공격은 자동으로 이루어집니다. 한 판의 빌드는 매번 달라집니다. 현재 핵심 플레이를 다듬고 있습니다.</p>
+        <p class="en sub" lang="en">We’re developing a dark fantasy action roguelite for mobile, designed for <span class="nowrap">one-handed play.</span> You control movement and dodging; attacks are automatic. Your build is different every run. We’re refining the core gameplay now.</p>
+        <p class="meta"><span>개발 중 · 2027년 상반기 출시 목표 · iOS, Android</span> <span class="sub" lang="en">In development · Target release: first half of 2027 · iOS, Android</span></p>
       </div>
     </div>
   </section>
