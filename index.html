@@ -3,67 +3,177 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>규랩 (Gyu Lap)</title>
-<meta name="description" content="규랩(Gyu Lap)은 모바일 게임과 앱을 만드는 1인 개발 스튜디오입니다.">
+<title>규랩 Gyu Lap — 모바일 게임 스튜디오</title>
+<meta name="description" content="규랩(Gyu Lap)은 모바일 게임을 만드는 1인 개발 스튜디오입니다. Gyu Lap is a one-person mobile game studio based in the Republic of Korea.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0E0D0C">
+<link rel="canonical" href="https://gyulap.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Gyu Lap">
+<meta property="og:title" content="규랩 Gyu Lap — 모바일 게임 스튜디오">
+<meta property="og:description" content="One more lap. 규랩은 모바일 게임을 만드는 1인 개발 스튜디오입니다.">
+<meta property="og:url" content="https://gyulap.com/">
+<link rel="preload" href="fonts/archivo-subset.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/pretendard-subset.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Gyu Lap","alternateName":"규랩","url":"https://gyulap.com/","email":"contact@gyulap.com"}
+</script>
 <style>
-  :root { --bg:#f6f4ef; --ink:#1d1f22; --sub:#5c6168; --line:#d9d5cb; --accent:#2f5d62; }
-  @media (prefers-color-scheme: dark) {
-    :root { --bg:#15171a; --ink:#ecebe6; --sub:#a3a8ae; --line:#2c3035; --accent:#7fb3b8; }
-  }
-  * { box-sizing:border-box; }
-  html,body { margin:0; }
-  body {
-    background:var(--bg); color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif;
-    line-height:1.7; -webkit-font-smoothing:antialiased;
-  }
-  main { max-width:680px; margin:0 auto; padding:96px 24px 64px; }
-  .mark { font-size:14px; letter-spacing:.18em; color:var(--accent); font-weight:600; }
-  h1 { font-size:44px; line-height:1.2; margin:12px 0 20px; letter-spacing:-.02em; }
-  h1 span { color:var(--sub); font-weight:400; font-size:.55em; margin-left:.4em; letter-spacing:0; }
-  .lead { font-size:19px; color:var(--sub); margin:0 0 56px; }
-  section { border-top:1px solid var(--line); padding:28px 0; display:grid; grid-template-columns:120px 1fr; gap:16px; }
-  h2 { font-size:14px; margin:4px 0 0; color:var(--sub); font-weight:600; letter-spacing:.04em; }
-  ul { margin:0; padding:0; list-style:none; }
-  li + li { margin-top:6px; }
-  a { color:var(--accent); text-decoration:none; border-bottom:1px solid currentColor; }
-  footer { border-top:1px solid var(--line); margin-top:8px; padding-top:24px; font-size:13px; color:var(--sub); }
-  @media (max-width:520px) {
-    main { padding-top:64px; }
-    h1 { font-size:34px; }
-    section { grid-template-columns:1fr; gap:6px; }
-  }
+@font-face { font-family: "Archivo"; src: url("fonts/archivo-subset.woff2") format("woff2"); font-weight: 400 800; font-stretch: 62% 125%; font-display: swap; }
+@font-face { font-family: "GL Text"; src: url("fonts/pretendard-subset.woff2") format("woff2"); font-weight: 400 700; font-display: swap; }
+
+:root {
+  --bg: #0E0D0C; --ink: #F2F0EB; --sub: #A9A69F; --line: #2A2826; --accent: #FF6B2C;
+  --pad: clamp(20px, 2.5vw, 32px);
+  --text: "GL Text", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+  --display: "Archivo", "Helvetica Neue", Arial, system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--text); font-size: 1.0625rem; line-height: 1.6;
+  word-break: keep-all; overflow-wrap: break-word; -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, p, dl, dd { margin: 0; }
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.wrap { max-width: 1280px; margin: 0 auto; padding-inline: var(--pad); }
+.sub { color: var(--sub); }
+.skip { position: absolute; left: var(--pad); top: -100px; z-index: 1; padding: 10px 14px; background: var(--ink); color: var(--bg); }
+.skip:focus { top: 12px; }
+
+/* header */
+.site-header .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; padding-block: 20px; }
+.wordmark { display: flex; align-items: center; min-height: 44px; font-family: var(--display); font-stretch: 125%; font-weight: 800; font-size: 20px; letter-spacing: -0.015em; }
+.wordmark:hover { text-decoration: none; }
+.site-nav { display: flex; flex-wrap: wrap; gap: 4px; margin: 0 -14px; font-size: 15px; }
+.site-nav a { display: flex; align-items: center; min-height: 44px; padding: 0 14px; }
+
+/* hero */
+.hero { display: grid; gap: 40px; padding-block: 72px 96px; }
+.kicker { display: flex; flex-wrap: wrap; gap: 2px 14px; font-size: 15px; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 505px; column-gap: 48px; }
+.hero h1 {
+  grid-column: 1 / -1; grid-row: 1; align-self: end; align-self: last baseline;
+  font-family: var(--display); font-stretch: 125%; font-weight: 700;
+  font-size: clamp(44px, 15.5vw, 198px); line-height: 0.86; letter-spacing: -0.045em;
+}
+.hero h1 .line { display: block; }
+.hero h1 .dot { color: var(--accent); }
+.intro { grid-column: 2; grid-row: 1; align-self: end; align-self: last baseline; display: grid; gap: 10px; }
+.intro .ko { font-size: 19px; text-wrap: pretty; }
+.intro .en { font-size: 15px; text-wrap: pretty; }
+/* side by side only while the intro (4 lines) is shorter than one headline line */
+@media (max-width: 1040px) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr); }
+  .intro { grid-column: 1; grid-row: 2; max-width: 505px; margin-top: 28px; }
+}
+
+/* rows */
+.row { border-top: 1px solid var(--line); }
+.row .wrap { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 24px 32px; align-items: baseline; padding-block: 40px 96px; }
+.row h2 { font-size: 15px; font-weight: 400; color: var(--sub); }
+.row .body { display: grid; justify-items: start; min-width: 0; }
+@media (max-width: 900px) { .row .wrap { grid-template-columns: minmax(0, 1fr); } }
+
+.statement { max-width: 20em; font-size: clamp(24px, 2.9vw, 36px); line-height: 1.4; font-weight: 500; letter-spacing: -0.02em; text-wrap: balance; }
+.work .en { max-width: 36em; margin-top: 16px; font-size: 16px; text-wrap: pretty; }
+.work .meta { margin-top: 32px; font-size: 15px; }
+
+.about .ko { max-width: 34em; font-size: 19px; text-wrap: pretty; }
+.about .en { max-width: 36em; margin-top: 10px; font-size: 16px; text-wrap: pretty; }
+.facts { justify-self: stretch; display: grid; grid-template-columns: minmax(0, 1fr); column-gap: 32px; margin-top: 40px; border-bottom: 1px solid var(--line); }
+.facts > div { display: flex; gap: 16px; padding: 16px 0; border-top: 1px solid var(--line); }
+.facts dt { flex: none; width: 96px; font-size: 15px; color: var(--sub); }
+@media (min-width: 1000px) { .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.contact .wrap { padding-bottom: 120px; }
+.mail {
+  font-family: var(--display); font-stretch: 112%; font-weight: 700;
+  font-size: clamp(26px, 4.2vw, 52px); line-height: 1.1; letter-spacing: -0.035em;
+  text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 0.05em; text-underline-offset: 0.16em;
+  overflow-wrap: anywhere;
+}
+.mail:hover { text-decoration-color: var(--ink); text-underline-offset: 0.16em; }
+.contact .note { margin-top: 20px; font-size: 16px; }
+
+/* footer */
+.site-footer { border-top: 1px solid var(--line); }
+.site-footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 24px; padding-block: 16px 32px; font-size: 14px; color: var(--sub); }
+.site-footer a { display: flex; align-items: center; min-height: 44px; }
 </style>
 </head>
 <body>
-<main>
-  <div class="mark">GYU LAP</div>
-  <h1>규랩<span>Gyu Lap</span></h1>
-  <p class="lead">모바일 게임과 앱을 만드는 1인 개발 스튜디오입니다.</p>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
 
-  <section>
-    <h2>하는 일</h2>
-    <ul>
-      <li>모바일 게임 개발 및 공급</li>
-      <li>응용 소프트웨어(앱) 개발 및 공급</li>
-    </ul>
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="#top" lang="en">Gyu Lap</a>
+    <nav class="site-nav" aria-label="주요 메뉴" lang="en">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section id="top" class="hero wrap" aria-labelledby="tagline">
+    <p class="kicker"><span>모바일 게임 스튜디오</span> <span class="sub" lang="en">Independent mobile game studio</span></p>
+    <div class="hero-grid">
+      <h1 id="tagline" lang="en"><span class="line">One more</span> <span class="line">lap<span class="dot">.</span></span></h1>
+      <div class="intro">
+        <p class="ko">규랩은 모바일 게임을 만드는 1인 개발 스튜디오입니다.<br>한 판 더 하고 싶은 게임을 만듭니다.</p>
+        <p class="en sub" lang="en">Gyu Lap is a one-person mobile game studio, making games worth one more run.</p>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>소재지</h2>
-    <ul>
-      <li>대한민국</li>
-    </ul>
+  <section id="work" class="row work" aria-labelledby="work-h">
+    <div class="wrap">
+      <h2 id="work-h" lang="en">Work</h2>
+      <div class="body">
+        <h3 class="statement">한 손으로 플레이하는 다크 판타지 모바일 액션 로그라이트를 만들고 있습니다.</h3>
+        <p class="en sub" lang="en">Currently building a dark fantasy action roguelite for mobile, played with one hand.</p>
+        <p class="meta">개발 중 · iOS · Android</p>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>문의</h2>
-    <ul>
-      <li><a href="mailto:contact@gyulap.com">contact@gyulap.com</a></li>
-    </ul>
+  <section id="about" class="row about" aria-labelledby="about-h">
+    <div class="wrap">
+      <h2 id="about-h" lang="en">About</h2>
+      <div class="body">
+        <p class="ko">규랩(Gyu Lap)은 대한민국에 기반을 둔 개인사업자입니다. 한 명의 개발자가 게임의 기획과 개발을 맡고 있습니다.</p>
+        <p class="en sub" lang="en">Gyu Lap is a sole proprietorship based in the Republic of Korea. One developer handles game design and development.</p>
+        <dl class="facts">
+          <div><dt>상호</dt><dd>규랩 (Gyu Lap)</dd></div>
+          <div><dt>형태</dt><dd>개인사업자 · <span lang="en">Sole proprietorship</span></dd></div>
+          <div><dt>업종</dt><dd>모바일 게임 · 응용 소프트웨어 개발 및 공급</dd></div>
+          <div><dt>기반 지역</dt><dd>대한민국 · <span lang="en">Republic of Korea</span></dd></div>
+        </dl>
+      </div>
+    </div>
   </section>
 
-  <footer>© 2026 규랩 (Gyu Lap)</footer>
+  <section id="contact" class="row contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <h2 id="contact-h" lang="en">Contact</h2>
+      <div class="body">
+        <a class="mail" href="mailto:contact@gyulap.com">contact@gyulap.com</a>
+        <p class="note sub">사업 · 지원 문의는 메일로 받습니다. <span lang="en">Business and support inquiries by email.</span></p>
+      </div>
+    </div>
+  </section>
 </main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Gyu Lap (규랩)</span>
+    <a href="mailto:contact@gyulap.com">지원 문의</a>
+  </div>
+</footer>
 </body>
 </html>
